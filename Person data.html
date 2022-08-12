@@ -85,6 +85,7 @@ body, html {
 }
 </style>
 </head>
+
 <body style="font-family: 'Times New Roman', Times, serif;">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -107,6 +108,8 @@ body, html {
       
     </div>
   </nav>
+
+
 
 <div class="bg-image"></div>
 <div class="bg-text">
@@ -182,10 +185,12 @@ body, html {
   </fieldset>
 </div>
 
+
 <div class="card">
-	<button id = "emptable" type="button" onclick="loadXMLDoc()" style="background-color:rgb(96, 206, 81);color:rgb(64, 52, 226)"><b>Display Employee List</b></button>
+	<button id = "emptable" type="button" onclick="loadXMLDoc()" style="background-color:pink;color:black"><b>Display Employee List</b></button>
 	<div id="card_table" class="table_content" style="background-color:rgb(214, 249, 253)"></div>
 </div>
+<script>
 function loadXMLDoc() {
 	var xhttp = new XMLHttpRequest();
 	var data;
@@ -221,6 +226,8 @@ function loadXMLDoc() {
 	xhttp.open("GET", api, true);
 	xhttp.send();
   }
+</script>
+
 
 <section>
   <div style="background-color:black"> 
