@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+
+
+
+<style>
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+@media screen and (max-width: 600px){
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+body, html {
+  height: 100%;
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAIUAjAMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAABQMEBgIBB//EAEAQAAIBAwMCBQEFBgQDCQEAAAECAwAEEQUSITFBBhNRYXEUIiMygaEVQlKRscFDotHwJDNyFmKCkrLC0uHiB//EABoBAAMBAQEBAAAAAAAAAAAAAAACAwEEBQb/xAAjEQADAAICAgMBAAMAAAAAAAAAAQIDESExBBITIkEUUdHw/9oADAMBAAIRAxEAPwB1RRRVjyQooooAK5L4rqoJTh8ZoNRMrK3Qgn0obgGobGWC6tZQu0uspiZxwR/viqUeojclq6sTIp2Oe4wcZHqcH8xUYyur9Wjsy+I4x+6e0W5JAWzVS71ZLN0SSN3BXJ2D8I96S+KdQltrSOK3kMbyscuOoA649OorrSUkg0u2khgeWS7iYs7ZO5g5whPYEY/ka26rX17G8bxpyc30amGRZoxInQjNd1kdN1K4tfEj6aH8y1aUoqE52HGTt/PPFaW5mw2xT84p5raObNi+OtFh22DJrxW3DNURITwSTVi2midmiWVDIvLIGGR+VNsnosUUUUChRRRQAUUUUAcO+2snq97q+o+IH0rTbsWkUUYd3XG48Dv/AOIcVqrgDbupWdLilv8A9oplJvL8tz1V19CPakyKnL9ezp8X09179FHRtcurcvY6uGlnQ5imRcCVPf3B/wB96cyTR3EZkib8PDjutQW+mPf6juW2Y3BQrsXLDPcj54pla2FpoF2wuz9bfOP+UzfcQD+FmHMj4yQoz3+algzey1XaOryvEma3HTKX/wDPrO9M93ZrYyNak7hclcIrDggk9c+1PrvwvatLbvLfpG0R3BbeJpTngkZGB6/OarXd5cXbxXMDSzyw5eBeVjKYyR5YO3oD1yajto9dv75ZNSuYIbby1+5jbIj8zlSMcEEAjrwfmurP65sny9MjiyOMXx9lPxH4c0O4UGabWQYwSPIgjHBHOAx9qv6Tb6Va+HA8F9ewxwIyB7yxJOd3GQnXqOnas74hnEWsaXZQxvJJcoJN6vgKQeQcdOnPt84qXWPDlhY2cl7auY0hkdpEjkZdyLk5wpAJJGBx+9SevWv0bDmUpzXB54c8G3f151OK/stUiUMUktZMsWOQcqcEfr1qprmoPZzPDtMc+ftbxgoM4HB71q0hu9OhVLjEvkBUaQnJyR03DnPfijVrdLzTEOs2j6ihYEKSqXVupH+G/wC/g/utyfemx6muSGRvLuujOeF7V7u2uLq4u5nCyCNIw2ecZJOfb46VUv8Aw+IPEdhLpMpiCsJLtN3IA6nOcnd8e5ri80y60CNdT0rUDcaW7ELcouDG3TbIh/DJzjp64x0qXQ4pXvJNSlkYgKQzMSTIT2JqmTAqr5N8BPkfHj+P15fbNNR16UtknaVsngdhUiOSAoJx6VHZHReorxRhQDXtaYFB461U1a7ex026uYY/MkiiZ1X1IHFZDSdR8QP9PcT3TSrO26OIrGVYckAYGe3rS1anstiwVl6N8bdnQ5xg1SkjMMzQr94WUEwj8WDwDjrUmiaxb3lvHFdSJBdPwYHYAt7rnqK9NnBoMra9tD3Rk+nso5OPMuH6bj/CoBJ+Patb42iywpPX6MbqeTQLFok8ya/biSWLaPKzyIQezEHlscfOM/OX1mfVdUjhvrpNOltiWjRgEiJBB2s7cqDg5J68Ec1sotXstSxJa3KSpkjk4Yt3JHXJqO60+1vBi7gWUZH4vbpSek79tch/TS+v4NFu40SP6GMwouHjBOfLJXBA9R0qF5pHXazEgqF6dgTgfqa4oqmjlbplyw0u5vw7wRhginnI6+nqM1SnhVg8UyKykbWU4INWbS8uLPd9M+zdjdwDkDsfbnpVf8qA/OCG4SZ7JbWCdoYweMDJA27eD1zjv7Cp9S1qwt7u08+CWWedxFb28Y3bAoGXJOPnPWvK8Kg4JUZ9axpM2bqS1FcRy3Zk2KqzKyXEDBfLukPRX9x2bt8GkfjGSPRrS2k02IHT5yRC7dImHVG9we3eotYN85MFlas/2ciViNufT5qzaIk9rFpWs3Fu0Oqop83fu8u4OBDIOMdQUb1IHXJpkVmXfLMarandSRm2luJLhmykaYAP5dAPc1tNLgl2Qi6AMxjyxGQN3cD8qQr4gOiGewtbKCG4VjHcSTOWkJBwRxjHIq14c1DUNQvbiS6mMlsE+yNg2789j64z370ZYb5notF44TdrbNCepxRRRWI4W9vZy8YcYNe6JYaaRcRvaW3mhsjMY/DXtL9Qv7C0ctPPslUZOw4YD+1DRTHTmtota7f+Hpmk07XoYtqKCqyx9vVSOnTsao+JrK9htLfSdFjY21jajC3hD/ez5ZgS2Sdsf2fh640TUtN1rVkhVDLMZY0Lk78gnH960utzrNezkHI8+T9Dt/8AbSb29HTd1Mb0fOvDFlHa3z2d/bz2V++SJbad0WcDtwe2ensTW7Se4jRUW5n2qMDMrH+9Q4BIJAJHTI6V1T6OSqdDaytL28gEqahsLyGNEeZgXYDOB/OuXt7qOyS4l1IRl0LLE0r7mxxj5zVixu47LRIZ3g811u2MWXICttHPvXV6kkuiWUgsvNxGzNPk/djdk+1LsopWiGXT9QjCA325jIkUirMxMTN0zXR03UPqIoUvw4kkaPesrEKwBJB/lTS4jeO5uZHUqk17bGMno+MdPWoLa8STxBFaQQeUiXMrsd5Yu+1hn2+KNsb0lCmwS6vYppfrzDHFtLNLKwH2uBVaWe4jkZFvJHAONyyNhvcU10e1uLeyv4prB5ZCkR8hsjcNx9Pj9KSSoySujoUdWIKnqPatTJVOkiHURdX1qYP2hdQhiMtHIckZ5HPrVXTtG0+AC2jgCLINhcEhsk5zx3yAfkVerP6rLewTEm+tAm4kRnj7OeM/3p5l09IR05Q28T6Nps2px6zJFI8moRBpU34QyrhG46/uioUlKoqRhY41GAqLgAUt8brJqXheGaIqpt9YePKgY2yQiU4/Ol2k+GNUgihvY5BbyFhtiIP3i/8Aex0z/sCkr6r7M7V47yraNVHK2COp96lVnIqgLhotQgtJoJUEylopMZBx1B9DTOiWnyjlyRUPVI8YhQWYgAdSTWC8Q297eahcu4drfcBH5MW5mBHAx8960+tWzTXlg8qSS2aSfepGehPRiO4FdasqpZzpaT8n7AlDAkL14GOucjI7VOqv29ZR2ePixqPeqMz4ZtbaPxNpEsH7QOL63Lf8KV2nzBwxxwOOfmtPrrTzLNENQ+jmF1dIhkfLE+dJjAyMjoR7VmLGa6hnszbw3UrxIpGWER+yB0XB47HPNbbxNpC31/evOkUkEknmRFufsSKrD9Q4oyJeyS7HT1DbfBY0bwnqen3UNjeat9abmPzUkaPAUDP5+lXLfS5ZoryQOo+lJ3A/vYz0/lWnj8sXUUxAE1sI7dP+mTyz/ZqraWsSo0UshQ3d3MFULncMFcE9vWtTZz1jl1sSwaTPPBZMJR5dy7BQc/YIB6/OK4gsrmXTJ7lZyIojtaPcefXjp3p/orgQadbTcNtkdc/xKxB/QmoNOjjGkpatKVluorhlj253Hsc+22m2xVjkVNp1z9CJ/qctHF5wg3nKp6jsKkfSXivY7dL6P6pmAKru3LkZyT8VdmjD6VJM6AxjTFVJc9HGRt/Xp7VZuopf+0lrL9GEiEqj6gf4h2dD8dPyrNh6ITmwvAdQc3Lg2n4zuP2+uAP9969l0fF2lv8AXRPcSOAVwSRkZyac3EyNpt3IvLXVq8z+xUImP61zcxSnXrOQ2YSMSKPPHV/s9DQjXEiL9lMnM06RDz2gLMDwQM5+DSzWPD1laXhR/JmlyWcIpABOM5rSa1Kk2kWlxkZkuSZP+oLtP/pzWE8davf2vje4sbTZOJ2XaMnMRwo5wOnOc0001ymJWJNNIYeJtOK+E3WzhWUyanGTGWxjFtt/0/nSDT7vxGLYW6LJEuMDdtcp7Bj2/wBKZ+ItZu00DSCkAR7uWe6Mbcnyw2yMn5UZqjpGrieVYZ4zFP29G/0qP9eN16V2b/V8b+NGiCk7C7bigwvYD4Hauq8Vw/4a9q6SXRGqqnuiOdS0ZC5/KqrW8mAwXn0Har1HShmJie522w+/P2iOEHJP+lN49Skv/DkE0MIWa2Y2km7nAPMT/Gfs/maWTxJe3cMiMHhdcKVP4scnH5Y/nTaOfTdKCxvbt5Nypju13E5i9fkHkfBrheZu2t9H0vj+H47wQvVu3y/9f9+mQj1TUbq+WG5vXhw2+L6OEsZNnLI+44HHA5rYxNC8asZrhT12mIZX+Tf0qo+jfR30jNtdsmUSL0lVvwyD5HX3+aiur2O2uLW32s811L5cSJ1PGSfgDn+mTXVjba3R43lTM5PjxroZ/ccf8RPx0+6HH+aj7jg+fNx0+6HH+ao5IjHhsgxsSFf+LFcVQ5OSf7jbt+on29ceUMZ/81e7ou91cHvzH/8Aqrmjafb3wm86cxuq4UEDG4/hwc8ng8UsfaCfLJKdiRg1hvKWyb7jGPqJ/T/lD/5V7ui4zc3HHT7scf5qr98VPJazRwecQMBtrL3U9sitMTbK9zNZRgRz3MuH4VWiGCfndSk+E01PVBf2WEv3YIrMcqWIxuPuq5P5D5pd4qad2t7NsJFM24XcZwICvJL+gxnJ9Aab2N5L4b0QPdS+ZdXSeXZfxiE8NM3u5H2fRce9JvZ0TDWmmReKbi31C/kexkV7W3UW8W391U4/rk0vm0lbG3g1C4ieGWBBIx34D55+0COOPipYo7e6UTquH/jHBHz/APYps1u82nvbiVlEg5LqHznrwa8yPFyTkb/yc2CInNVZp3sqeH9WttWt3kgDo6EB45MZHp0ptSvQ9Fg0eNxExeSQAM+MdM44/M/zppXrLeuRr9fb69BVXU7Vr3Tri1STymljKh/TIq1RQKnp7K0MohSNvo1hmCjzFDgozDGCMDPHOM+tRXrQTyGZo3Mjdd7ZH9KtSR7znNczRHyHEKr5oU7N3Y44/WovDCXR2x5/kJ/Wtb4KFp4zsYLj9hag8saDPlXypuFo57Ed0PcdOf5Kda0nUI9WE0sCvqDLttzu3wsrf4kLdGHov4hnkEc0m0rwxquqyPNmGHcxG64blyD2HXHXmr3hTX5rCH6O8CX+mvMFFjMpcb88NGeqHPORwME4qXu2zp9UkbDRZHtrCOC6llnG1UZyftbFz9n86na/0uWcxC7t45fNVZIw+DFvkwuQegwaYxx6dqEDtbXIRkX8F4drA9vvOh/PJr5/qvgN/Mubi/tdX+9cs8oQTIe+4eUGyB2yB8Vf2S4OWMLtt0bS4g8kJh2bcWA+zj8Lbf7V08VsofN2m9ZCgUkKfw5B6n94gVUsrdmtlV3iLqoDEBlz74IBpQF1O5F15ERa5W5wRb2Uzho89M7cZwo5B7VWZ9ltEFC200aK/mgjTZpxUN5itumUkFcYZG6HpnBHc1ntN1e61GSSe681oiobzpWGEHTB4HPtyT2rUxaU0catfbLQsOPqnAOfZFJJ/mKxuseI7PR5UXRrdr68X8F7eRhY4T0Jhg6Kfc8/NInL4/Six01ytI1/09hb28UurxZBdZILZ/xSlSCrOP3UBAOD17+lYzxzDcPqEuswnzbgoPNRhlHQdBj2pVpWq3Nzfl72V57mcgSyScs57Ent8dPithZRLM489yFTpkVkt757HpejSXTMnpMkpvoZJ0a0iaT7e5sZIGdvPr6GtbaBskfujqPesL4o1e3v7L6OK3limLkSiThY9pwAFB5Jx1NazwjJPLoFs1yxd8EB26soPBNZjpvtG+VEyk5Y4oooqhwhRRRQAUAZIHrxRRQaiC6tZhI9yCsRVcRvjjOMDI+e4rMaLoA0t2klkjmkAxGUzhR36961c+5o8DpUUcCsD5gzUJwqXs7M3lu1pdHkisvhu9cfibI475wAPz6VmreS+sLq3isr26gaXgJaysg3A8jAOMcitVOu60lhw3luAGVOvBB496p20MQvk1BAXMSbUVhgKTnJ7844rfkuciS6/SuJYq8d1XaHcmr6utzFapqUu7YFZjj8WOp/SmEmp3ZjXzLubntvxSCHPmmdiS+7OT617qmp20ly1vDIxlijEsimMnYpzzx24rk8zFbScs3xLWSnLJNXtlkDXQ3F1UANu6896zeqaBNqcM0to6eaxLbC207u+PnrT+HUba70qNrZnl81Mb2GBgH+vFeQR7FznrT+FhuMer7J586nJxz+CWLw1brqFpfsDBIE3vBtADSY7/r8/lTi3WRG5HHcGrZlzFsZc++ajrpxy03sn5OWMmnJQudF066naee0jeRjlm5G759avKqooRFCqowABgAV7RVTlbbCiiigwKKKKACiiigAooooAASDkcEV6xLHLc0UVujXxwc4xVS8022vH8yVWEm3YXRsEr6H1FFFJS2hpupe5ZLb2kNtbx28K7Y412qKmAwMUUUyFbb5Z7RRRQYFFFFABRRRQB//2Q==");
+  
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  
+  /* Full height */
+  height: 100%; 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#a3{
+    padding:20px;
+    
+}
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+  margin:30px;
+}
+</style>
+</head>
+
+<body style="font-family: 'Times New Roman', Times, serif;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="Home.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Person data.html">Person data</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+
+
+
+<div class="bg-image"></div>
+<div class="bg-text">
+  <fieldset id="a2">
+    <p></p>
+    <h1 align="center">Person Management Application Form</h1>
+    <p></p>
+    <form style="margin:auto; width: 400px;" >
+        <table id="a3">
+            <tbody>
+                <tr>
+                    <td>
+                        <h4>First name</h4>
+                    </td>
+                    <td ><input type="text" maxlength="10" placeholder="First Name " required></td>
+                </tr>
+  
+                <tr>
+                    <td>
+                        <h4>Last name</h4>
+                    </td>
+                    <td><input type="text" maxlength="10" placeholder="Last Name" required></td>
+                </tr>
+  
+                <tr>
+                    <td>
+                        <h4>Email</h4>
+                    </td>
+                    <td><input type="email" maxlength="10" placeholder="Enter your email" required></td>
+                </tr>
+  
+                <tr>
+                    <td>
+                        <h4>Mobile Number &nbsp &nbsp</h4>
+                    </td>
+                    <td><input type="number" maxlength="10" placeholder="Enter your Mobile number" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Father's Name &nbsp &nbsp</h4>
+                    </td>
+                    <td><input type="text" maxlength="30" placeholder="Enter your Father's Name" required></td>
+                </tr>
+                <tr>
+                <td>
+                    <h4>Qualification &nbsp &nbsp</h4>
+                </td>
+                <td><input type="text" maxlength="30" placeholder="Enter your Qualification" required></td>
+            </tr>
+
+            <tr>
+                    <td>
+                        <h4>Age &nbsp &nbsp</h4>
+                    </td>
+                    <td><input type="number" maxlength="4" placeholder="Enter your age" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Company Name &nbsp &nbsp</h4>
+                    </td>
+                    <td><input type="text" maxlength="30" placeholder="Enter Company Name"></td>
+                </tr>
+                <tr id="a5">
+                  <td>
+                    <button id="button1" type="submit" value="submit">Submit</button>
+                  </td>
+                 
+                </tr>
+            </tbody>
+  
+        </table>
+    </form>
+  </fieldset>
+</div>
+
+
+<div class="card">
+	<button id = "emptable" type="button" onclick="loadXMLDoc()" style="background-color:pink;color:black"><b>Display Employee List</b></button>
+	<div id="card_table" class="table_content" style="background-color:rgb(214, 249, 253)"></div>
+</div>
+<script>
+function loadXMLDoc() {
+	var xhttp = new XMLHttpRequest();
+	var data;
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+		data = JSON.parse(this.responseText);
+		console.log(data);
+		console.log(data[0].address);
+		var html = '<table>';
+		  html += '<tr>';
+		  for( var j in data[0] ) {
+		  	html += '<th>' + j + '</th>';
+		  }
+		  html += '</tr>';
+		  for( var i = 0; i<data.length; i++) {
+			  html += '<tr>';
+			  for( var j in data[i] ) {
+				  console.log((j));
+				  if(j==="address"){html += '<td>' + data[i][j].city + '</td>';}
+				  else if(j==="company"){html += '<td>' + data[i][j].name + '</td>';}
+				  else{
+					  html += '<td>' + data[i][j] + '</td>';
+					  }
+			  }
+			  html += '</tr>';
+		  }
+		  html += '</table>';
+		  document.getElementById("card_table").innerHTML = html;
+	   }
+	  
+	};
+	const api = "https://jsonplaceholder.typicode.com/users?utm_source=Mailerlite&utm_medium=E-mail&utm_campaign=Test%20Series&utm_term=2022-08-09";
+	xhttp.open("GET", api, true);
+	xhttp.send();
+  }
+</script>
+
+
+<section>
+  <div style="background-color:black"> 
+     <footer id="footer" class="footer container">
+    <div class="footer-contact">
+      <h1 class="footer-contact-heading" style="color:aliceblue">Contact With Me</h1>
+      <p class="footer-contact-info" style="color:aliceblue">Email: batratanya03@gamil.com</p>
+      <p class="footer-contact-info" style="color:aliceblue">Mobile: 011 375 6969</p>
+    </div>
+    <div class="footer-social-follow">
+      <h1 class="footer-social-follow-heading" style="color:aliceblue">Follow Me</h1>
+      <div class="footer-social-icon">
+        <a href="https://www.facebook.com/"><i class="fab fa-facebook" style="color:aliceblue;font-size: 2em;"></i></a>
+        <a href="https://www.instagram.com/"><i class="fab fa-instagram-square" style="color:aliceblue;font-size: 2em;"></i></a>
+        <a href="https://www.behance.net/"><i class="fab fa-behance-square" style="color:aliceblue;font-size: 2em;"></i></a>
+        <a href="https://www.google.com/"><i class="fab fa-google" style="color:aliceblue;font-size: 2em;"></i></a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</section>
+
+</body>
+</html>
